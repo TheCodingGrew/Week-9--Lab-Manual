@@ -1,4 +1,4 @@
-# Week-9--Lab-Manual
+# Week-9 Lab-Manual (Authorization and External Sign-on)
 This repository contains instructions that you may need to navigate creating Authorization for Web Applications
 
 
