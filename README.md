@@ -113,10 +113,10 @@ builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 
 7. After logging in with google, you may have to go to your database and set EmailConfirmed to true if your email service is not configured yet. 
 
+Sources:
+- [Google external login](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/social/google-logins?view=aspnetcore-7.0)
 
-
-
-
+- [Enable secret storage](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-7.0&tabs=windows#enable-secret-storage)
 
 
 
