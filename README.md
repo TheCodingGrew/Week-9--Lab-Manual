@@ -3,7 +3,18 @@ This repository contains instructions that you may need to navigate creating Aut
 
 
 ## Part 1 - Role Based Authentication
-1. Let us add roles to our existing application by adding the below piece of code to your Program.cs. Modify the roles according to your requirements.
+
+1. Update your *builder.Services.AddDefaultIdentity* line so that it looks as shown below. You will need to include *AddRoles*:
+
+```
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddControllersWithViews();
+
+```
+
+2. Let us add roles to our existing application by adding the below piece of code to your Program.cs. Modify the roles according to your requirements.
 
 ```
 app.MapRazorPages();
@@ -22,16 +33,6 @@ using(var scope = app.Services.CreateScope())
 }
 //Code to copy ends here
 app.Run();
-
-```
-
-2. Update your *builder.Services.AddDefaultIdentity* line so that it looks as shown below. You will need to include *AddRoles*:
-
-```
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
 
 ```
 
@@ -76,15 +77,16 @@ Useful Links:
 7. Save the Client ID and Client Secret for use in the app's configuration. You may be prompted to download a JSON file. If so, download and keep it in a safe location. 
 
 ### Setting Up the Location Web App
+1. Add Microsoft.AspNetCore.Authentication.Google NuGet package. 
 
-1. Open Terminal and type the command
+2. Open Terminal and type the command
 ```
 dotnet user-secrets init
 ```
 
 Then, click on your project name and verify that \<UserSecretsId> has been added to propertygroup.
 
-2. In the terminal, type the following commands to register your google client ID with the application:
+3. In the terminal, type the following commands to register your google client ID with the application:
 
 ```
 dotnet user-secrets set "Authentication:Google:ClientId" "<client-id>"
@@ -96,9 +98,7 @@ You will be able to find the client-id and client-secret from the JSON you downl
 
 Run the commands one-by-one. 
 
-3. Right-click on project, choose Manage User Secrets and verify that the details you entered are present. 
-
-4. Add Microsoft.AspNetCore.Authentication.Google NuGet package. 
+4. Right-click on project, choose Manage User Secrets and verify that the details you entered are present. 
 
 5. Add the below code to your Program.cs to add google authentication to your application. 
 ```
