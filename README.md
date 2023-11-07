@@ -1,6 +1,14 @@
 # Week-9 Lab-Manual (Authorization and External Sign-on)
 This repository contains instructions that you may need to navigate creating Authorization for Web Applications
 
+## Application Set up
+
+1.	Create an MVC app. Choose Individual Accounts from the Authentication type dropdown before creating the application.
+2.	Run Update-Database in pm console.
+3.	Open SQL Server Object Explorer and verify your database is present (only for windows).
+4.	Then Add > scaffold item > Identity > Choose all pages
+5.	Register a few users and try logging in with them.
+
 
 ## Part 1 - Role Based Authentication
 
