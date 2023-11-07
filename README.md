@@ -4,10 +4,19 @@ This repository contains instructions that you may need to navigate creating Aut
 ## Application Set up
 
 1.	Create an MVC app. Choose Individual Accounts from the Authentication type dropdown before creating the application.
-2.	Run Update-Database in pm console.
-3.	Open SQL Server Object Explorer and verify your database is present (only for windows).
-4.	Then Add > scaffold item > Identity > Choose all pages
-5.	Register a few users and try logging in with them.
+2.
+   - Run Update-Database in pm console.
+   - Run dotnet ef database update in Terminal for MAC. Install dotnet ef if required
+4.	Open SQL Server Object Explorer and verify your database is present (only for windows).
+5. Add Identity pages
+   - For Windows:  Add > scaffold item > Identity > Choose all pages
+   - For MAC : Run the following commands
+   ```
+   dotnet aspnet-codegenerator identity -dc ApplicationDbContext
+   dotnet ef migrations add InitialIdentity
+   ```
+    You may be required to install a few pacakges for MAC if the above command shows an error.
+6.	Register a few users and try logging in with them.
 
 
 ## Part 1 - Role Based Authentication
